@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	mem.a = NULL;
 	mem.b = NULL;
-	mem_print = 0;
+	mem.print = 0;
 	if (argc <= 1)
 		return (0);
 	read_args(argc, argv, &mem);

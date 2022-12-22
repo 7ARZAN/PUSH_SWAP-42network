@@ -16,6 +16,6 @@
 # include <common/common.h>
 
 void	read_instructions(t_mem *mem);
-int		execute_action(char *name, t_list *mem);
+int		execute_action(char *name, t_mem *mem);
 
 #endif
