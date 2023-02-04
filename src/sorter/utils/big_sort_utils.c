@@ -1,19 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   big_sort_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 11:49:11 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 11:51:03 by 7arzan           ###   ########.fr       */
+/*   Created: 2023/02/01 04:32:53 by 7arzan            #+#    #+#             */
+/*   Updated: 2023/02/04 12:09:13 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include <sorter/sorter.h>
 
-# include <common/push_swap.h>
+int	small_int(int stack[], int size)
+{
+	int	nb;
 
+	size--;
+	nb = stack[size];
+	while (size >= 0)
+	{
+		if (stack[size] < nb)
+			nb = stack[size];
+		size--;
+	}
+	return (nb);
+}
 
-#endif
+int	big_int(int stack[], int size)
+{
+	int	nb;
+
+	size--;
+	nb = stack[size];
+	while (size >= 0)
+	{
+		if (stack[size] > nb)
+			nb = stack[size];
+		size--;
+	}
+	return (nb);
+}

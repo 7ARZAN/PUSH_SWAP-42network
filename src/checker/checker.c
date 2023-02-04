@@ -3,65 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 7arzan <elakhfif@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 02:27:31 by 7arzan            #+#    #+#             */
-/*   Updated: 2022/12/04 02:42:48 by 7arzan           ###   ########.fr       */
+/*   Created: 2023/02/03 11:41:53 by 7arzan            #+#    #+#             */
+/*   Updated: 2023/02/04 12:02:21 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker/checker.h>
+#include <string.h>
 
-int	execute_action(char *name, t_mem *mem)
+void	tester(int sizea, int sizeb, int ac)
 {
-	if (!ft_strcmp(name, "sa"))
-		swap_a(mem);
-	else if (ft_strcmp(name, "sb"))
-		swap_b(mem);
-	else if (ft_strcmp(name, "ss"))
-		swap_b_a(mem);
-	else if (ft_strcmp(name, "pa"))
-		push_a(mem);
-	else if (ft_strcmp(name, "pb"))
-		push_b(mem);
-	else if (ft_strcmp(name, "ra"))
-		rotate_a(mem);
-	else if (ft_strcmp(name, "rb"))
-		rotate_b(mem);
-	else if (ft_strcmp(name, "rr"))
-		rotate_b_a(mem);
-	else if (ft_strcmp(name, "rra"))
-		rev_rotate_a(mem);
-	else if (ft_strcmp(name, "rrb"))
-		rev_rotate_b(mem);
-	else if (ft_strcmp(name, "rrr"))
-		rev_rotate_b_a(mem);
-	else
-		return (0);
-	return (1);
+	char	*buffer;
+
+	buffer = get_next_line(0);
+	while (buffer != NULL)
+	{
+		if (validation_action(buffer) == 0)
+		{
+			write(2, "ERROR\n", 6);
+			//free(buffer);
+			exit(1);
+		}
+		if (ft_strncmp(buffer, "s", 1) == 0)
+			do_swap_sa_sb(buffer, sizea, sizeb);
+		else if (ft_strncmp(buffer, "r", 1) == 0)
+			do_rotate_ra_rb(buffer, sizea, sizeb);
+		else
+		{
+			sizea = do_push_pa_pb(buffer, sizea, sizeb);
+			sizeb = (ac - 1) - sizea;
+		}
+		free(buffer);
+		buffer = get_next_line(0);
+	}
+	free(buffer);
 }
 
-void	read_instructions(t_mem *mem)
+int	main(int ac, char *av[])
 {
-	char	instruction[4];
-	int		index;
-	int		prev_index;
+	int	sizea;
+	int	sizeb;
 
-	index = 0;
-	while (index < 4)
+	s_check.stack_a = ft_calloc(ac, sizeof(int));
+	s_check.stack_b = ft_calloc(ac, sizeof(int));
+	sizea = make_stack(av, s_check.stack_a, ac);
+	if (sizea < 0)
 	{
-		prev_index = index;
-		index += read(0, instruction + index, 1);
-		if (prev_index == index)
-			break ;
-		else if (instruction[prev_index] == '\n')
-		{
-			instruction[prev_index] = 0;
-			if (!execute_action(instruction, mem))
-				exit_error(mem);
-			index = 0;
-		}
+		free(s_check.stack_a);
+		free(s_check.stack_b);
+		write(2, "ERROR\n", 6);
+		return (-1);
 	}
-	if (index == 4)
-		exit_error(mem);
+	sizeb = (ac - 1) - sizea;
+	tester(sizea, sizeb, ac);
+	if (is_sorted(s_check.stack_a, sizea) && ac > 1)
+		write(1, "OK\n", 3);
+	else if (!is_sorted(s_check.stack_a, sizea) && ac > 1)
+		write(1, "KO\n", 3);
+	free(s_check.stack_a);
+	free(s_check.stack_b);
+	return (0);
 }

@@ -3,66 +3,61 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: 7arzan <elakhfif@student.1337.ma>          +#+  +:+       +#+         #
+#    By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/04 01:57:35 by 7arzan            #+#    #+#              #
-#    Updated: 2022/12/04 02:27:03 by 7arzan           ###   ########.fr        #
+#    Created: 2023/02/04 11:25:31 by 7arzan            #+#    #+#              #
+#    Updated: 2023/02/04 11:58:31 by 7arzan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_COMMON = 	./src/common/actions/action_1.c \
-				./src/common/actions/action_2.c \
-				./src/common/actions/action_3.c \
-				./src/common/args.c \
-				./src/common/clean.c \
-				./src/common/stack.c \
-				./src/common/utils/ft_utils_1.c \
-				./src/common/utils/ft_utils_2.c \
-				./src/common/utils/ft_utils_3.c
+SRC_COMMON = ./src/common/parser.c\
+	     ./src/common/push_swap.c\
+	     ./src/common/instructions.c\
+	     ./src/common/deal_with_instructions.c\
+	     ./src/common/utils/push_swap_utils.c\
 
-SRC_SORTER =	./src/sorter/looper.c \
-				./src/sorter/main.c \
-				./src/sorter/sorter.c \
-				./src/sorter/utils/five_optimize.c \
-				./src/sorter/utils/indexer.c \
-				./src/sorter/utils/rotator.c \
-				./src/sorter/utils/sorter_utils.c
+SRC_SORTER = ./src/sorter/sort_to_end.c\
+	     ./src/sorter/sort_two_to_five.c\
+	     ./src/sorter/utils/big_sort_utils.c\
 
-SRC_CHECKER =	./src/checker/checker.c \
-				./src/checker/main.c
+SRC_CHECKER = ./src/checker/checker.c\
+	      ./src/checker/checker_actions.c\
+	      ./src/checker/checker_instructions.c\
+	      ./src/checker/utils/checker_utils.c\
 
+OBJ_COMMON = $(SRC_COMMON:.c=.o)
 
-OBJS_COMMON	= ${SRC_COMMON:.c=.o}
-OBJS_SORTER		= ${SRC_SORTER:.c=.o}
-OBJS_CHECKER	= ${SRC_CHECKER:.c=.o}
+OBJ_SORTER = $(SRC_SORTER:.c=.o)
+
+OBJ_CHECKER = $(SRC_CHECKER:.c=.o)
 
 INCLUDE = ./src/include
 
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -O3
 
 NAME = push_swap
 NAME_CHECKER = checker
 
-CC = gcc
 RM = rm -f
 
-all: ${NAME}
+all: $(NAME)
+
+bonus : $(NAME_CHECKER)
 
 .c.o:
-			${CC} ${CFLAGS} -I$(INCLUDE) -c $< -o ${<:.c=.o}
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o ${<:.c=.o}
 
-$(NAME): $(OBJS_COMMON) $(OBJS_SORTER)
-			${CC} $(CFLAGS) -I$(INCLUDE) -o $(NAME) $(OBJS_COMMON) $(OBJS_SORTER)
+$(NAME): $(OBJ_COMMON) $(OBJ_SORTER)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -o $(NAME) $(OBJ_COMMON) $(OBJ_SORTER)
 
-$(NAME_CHECKER): $(OBJS_COMMON) $(OBJS_CHECKER)
-			${CC} $(CFLAGS) -I$(INCLUDE) -o $(NAME_CHECKER) $(OBJS_COMMON) $(OBJS_CHECKER)
+$(NAME_CHECKER): $(OBJ_COMMON) $(OBJ_CHECKER)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -o $(NAME_CHECKER) $(OBJ_COMMON) $(OBJ_CHECKER)
 
 clean:
-			${RM} ${OBJS_COMMON} ${OBJS_SORTER} ${OBJS_CHECKER}
+	$(RM) $(OBJ_CHECKER) $(OBJ_SORTER) $(OBJ_COMMON)
 
 fclean: clean
-			${RM} ${NAME} ${NAME_CHECKER}
+	$(RM) $(NAME) $(NAME_CHECKER)
 
-re: fclean all
-
-bonus: checker
+re : fclean all

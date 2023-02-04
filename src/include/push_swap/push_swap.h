@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indexer.c                                          :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 7arzan <elakhfif@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 02:11:56 by 7arzan            #+#    #+#             */
-/*   Updated: 2022/12/05 02:13:46 by 7arzan           ###   ########.fr       */
+/*   Created: 2023/02/04 11:54:37 by 7arzan            #+#    #+#             */
+/*   Updated: 2023/02/04 11:56:52 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sorter/sorter.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	tag_list(t_list *start, t_mem *mem)
-{
-	int	i;
 
-	i = 0;
-	while (start)
-	{
-		start->index = i++;
-		start = start->next_sort;
-	}
-	mem->max = i;
-}
+#endif
