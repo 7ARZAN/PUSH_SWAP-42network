@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 09:22:32 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:03:45 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:00:36 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	is_number(const char *nb)
 	{
 		if (*nb == '-' || *nb == '+')
 			nb++;
-		else if (!is_digit(*nb))
+		else if (!ft_isdigit(*nb))
 			return (0);
 		nb++;
 	}
