@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 09:22:32 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 14:00:36 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/08 19:15:44 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	is_sorted(int a[], int sizea)
 	return (1);
 }
 
-int	make_stack(int ac, char *av[], int stack[])
+int	make_stack(char *av[], int stack[], int ac)
 {
 	int	a;
 	int	b;

@@ -6,13 +6,13 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:12:47 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:06:31 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/11 20:40:30 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-int	make_stack(int ac, char *av[], int stack[])
+int	make_stack(char *av[], int stack[], int ac)
 {
 	int	a;
 	int	b;

@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:02:06 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:05:46 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/08 18:00:41 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,52 @@
 
 void	swap_sa_sb(int stack[], int size, char character)
 {
-	int	temp;
+	int	tmp;
 
 	if (size < 2)
 		return ;
 	size--;
-	temp = stack[size];
+	tmp = stack[size];
 	stack[size] = stack[size - 1];
-	stack[(size - 1)] = temp;
+	stack[size - 1] = tmp;
 	if (character)
 		printf("s%c\n", character);
 }
 
 void	rotate_ra_rb(int stack[], int size, char character)
 {
-	int	temp;
+	int	tmp;
 
 	if (size < 2)
 		return ;
 	size--;
-	temp = stack[size];
+	tmp = stack[size];
 	while (size > 0)
 	{
 		stack[size] = stack[size - 1];
 		size--;
 	}
-	stack[0] = temp;
+	stack[0] = tmp;
 	if (character)
 		printf("r%c\n", character);
 }
 
 void	reverse_rotate(int stack[], int size, char character)
 {
-	int	temp;
-	int	x;
+	int	tmp;
+	int	i;
 
 	if (size < 2)
 		return ;
 	size--;
-	temp = stack[0];
-	x = 0;
-	while (x < size)
+	tmp = stack[0];
+	i = 0;
+	while (i < size)
 	{
-		stack[x] = stack[x + 1];
-		x++;
+		stack[i] = stack[i + 1];
+		i++;
 	}
-	stack[x] = temp;
+	stack[i] = tmp;
 	if (character)
 		printf("rr%c\n", character);
 }

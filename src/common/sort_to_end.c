@@ -6,11 +6,11 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 08:15:13 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:08:12 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/10 15:56:40 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sorter/sorter.h>
+#include <push_swap/push_swap.h>
 
 int	find_position(int stack_a[], int size, int nb)
 {
@@ -33,7 +33,7 @@ void	instructions(int stack_a[], int stack_b[], int sizea, int sizeb)
 	int	actions;
 	int	tmp;
 
-	actions = sizeb - sizea;
+	actions = sizeb + sizea;
 	tmp = sizeb - 1;
 	while (tmp >= 0)
 	{
@@ -50,7 +50,7 @@ void	instructions(int stack_a[], int stack_b[], int sizea, int sizeb)
 	push_to_top(stack_b, sizeb, position_b, 'b');
 }
 
-int	next_to_sort_six(int stack_a[], int stack_b[], int sizea, int sizeb)
+int	next_to_sort_six(int stack_a[], int stack_b[], int sizea, int *sizeb)
 {
 	sizea = push_pa_pb(stack_b, stack_a, *sizeb, sizea);
 	write(1, "pb\n", 3);
@@ -76,7 +76,7 @@ void	sort_to_ends(int stack_a[], int stack_b[], int sizea, int sizeb)
 	}
 	while (sizeb > 0)
 	{
-		actions(stack_a, stack_b, sizea, sizeb);
+		instructions(stack_a, stack_b, sizea, sizeb);
 		sizeb = push_pa_pb(stack_a, stack_b, sizea, sizeb);
 		sizea++;
 		write(1, "pa\n", 3);

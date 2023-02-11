@@ -6,11 +6,11 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:32:53 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:09:13 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/10 15:57:18 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sorter/sorter.h>
+#include <push_swap/push_swap.h>
 
 int	small_int(int stack[], int size)
 {

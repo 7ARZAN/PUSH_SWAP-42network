@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:41:53 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:02:21 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/11 18:01:35 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	tester(int sizea, int sizeb, int ac)
 	buffer = get_next_line(0);
 	while (buffer != NULL)
 	{
-		if (validation_action(buffer) == 0)
+		if (validation_instruction(buffer) == 0)
 		{
 			write(2, "ERROR\n", 6);
-			//free(buffer);
+			free(buffer);
 			exit(1);
 		}
 		if (ft_strncmp(buffer, "s", 1) == 0)
@@ -46,8 +46,8 @@ int	main(int ac, char *av[])
 	int	sizea;
 	int	sizeb;
 
-	s_check.stack_a = ft_calloc(ac, sizeof(int));
-	s_check.stack_b = ft_calloc(ac, sizeof(int));
+	s_check.stack_a = calloc(ac, sizeof(int));
+	s_check.stack_b = calloc(ac, sizeof(int));
 	sizea = make_stack(av, s_check.stack_a, ac);
 	if (sizea < 0)
 	{
