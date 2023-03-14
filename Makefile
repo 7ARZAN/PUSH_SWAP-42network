@@ -6,19 +6,17 @@
 #    By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 11:25:31 by 7arzan            #+#    #+#              #
-#    Updated: 2023/02/11 18:00:43 by 7arzan           ###   ########.fr        #
+#    Updated: 2023/03/13 08:07:44 by 7arzan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_COMMON = ./src/common/parser.c\
-	     ./src/common/push_swap.c\
+	     ./src/common/push_swap_loading.c\
 	     ./src/common/instructions.c\
-	     ./src/common/deal_with_instructions.c\
 	     ./src/common/utils/push_swap_utils.c\
 	     ./src/common/utils/functions_needed.c\
 	     ./src/common/sort_to_end.c\
 	     ./src/common/sort_two_to_five.c\
-	     ./src/common/utils/big_sort_utils.c\
 
 SRC_CHECKER = ./src/checker/checker.c\
 	      ./src/checker/checker_actions.c\

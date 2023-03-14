@@ -6,68 +6,79 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:02:06 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/08 18:00:41 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/12 13:09:02 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-void	swap_sa_sb(int stack[], int size, char character)
+void	ra_or_rra(int *stack, int len, int max)
 {
-	int	tmp;
+	int	i;
 
-	if (size < 2)
+	i = 0;
+	while (stack[i] != max)
+		i++;
+	if (i == 0)
 		return ;
-	size--;
-	tmp = stack[size];
-	stack[size] = stack[size - 1];
-	stack[size - 1] = tmp;
-	if (character)
-		printf("s%c\n", character);
-}
-
-void	rotate_ra_rb(int stack[], int size, char character)
-{
-	int	tmp;
-
-	if (size < 2)
-		return ;
-	size--;
-	tmp = stack[size];
-	while (size > 0)
+	if (i < len / 2)
 	{
-		stack[size] = stack[size - 1];
-		size--;
+		write(1, "ra\n", 3);
+		rx(stack, len);
 	}
-	stack[0] = tmp;
-	if (character)
-		printf("r%c\n", character);
+	else
+	{
+		write(1, "rra\n", 4);
+		rrx(stack, len);
+	}
 }
 
-void	reverse_rotate(int stack[], int size, char character)
+void	rx(int *stack, int len)
 {
 	int	tmp;
 	int	i;
 
-	if (size < 2)
-		return ;
-	size--;
-	tmp = stack[0];
 	i = 0;
-	while (i < size)
-	{
-		stack[i] = stack[i + 1];
-		i++;
-	}
-	stack[i] = tmp;
-	if (character)
-		printf("rr%c\n", character);
+	tmp = stack[i];
+	while (++i < len)
+		stack[i - 1] = stack[i];
+	stack[i - 1] = tmp;
 }
 
-int	push_pa_pb(int stack1[], int stack2[], int size1, int size2)
+void	rrx(int *stack, int len)
 {
-	size2--;
-	stack1[size1] = stack2[size2];
-	stack2[size2] = 0;
-	return (size2);
+	int	tmp;
+
+	tmp = stack[len - 1];
+	while (--len)
+		stack[len] = stack[len - 1];
+	stack[len] = tmp;
+}
+
+void	rb_or_rrb(int *stack, int len_b, int max)
+{
+	int	i;
+
+	i = 0;
+	while (stack[i] != max)
+		i++;
+	if (i == 0)
+		return ;
+	if (i < (len_b / 2) + 1)
+	{
+		write(1, "rb\n", 3);
+		rx(stack, len_b);
+	}
+	else
+	{
+		write(1, "rrb\n", 4);
+		rrx(stack, len_b);
+	}
+}
+
+void	sx(int *stack, int swap)
+{
+	swap = stack[0];
+	stack[0] = stack[1];
+	stack[1] = swap;
 }

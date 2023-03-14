@@ -6,80 +6,112 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 08:15:13 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/10 15:56:40 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/13 08:25:09 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-int	find_position(int stack_a[], int size, int nb)
+int	calculate_position(int *stack, int middle, int len_a, int len)
 {
-	int	position;
+	int	smaller;
+	int	i;
 
-	size--;
-	position = size;
-	if (stack_a[size] > nb && stack_a[0] < nb)
-		return (size);
-	while (stack_a[position] > nb || stack_a[position - 1] < nb)
-		position--;
-	return (position - 1);
+	i = 0;
+	while (i < len_a)
+	{
+		if (stack[i] < middle)
+			smaller++;
+		i++;
+	}
+	if (pick_divider(len, len_a, smaller) == 1)
+		return (1);
+	return (0);
 }
 
-void	instructions(int stack_a[], int stack_b[], int sizea, int sizeb)
+int	find_middle(int *stack, int len_a, int len)
 {
-	int	position;
-	int	position_a;
-	int	position_b;
-	int	actions;
-	int	tmp;
+	int	i;
 
-	actions = sizeb + sizea;
-	tmp = sizeb - 1;
-	while (tmp >= 0)
+	i = 0;
+	while (i < len_a)
 	{
-		position = find_position(stack_a, sizea, stack_b[tmp]);
-		if (calculate_instructions(position, tmp, sizea, sizeb) < actions)
+		if (calculate_position(stack, stack[i], len_a, len))
+			return (stack[i]);
+		i++;
+	}
+	return (0);
+}
+
+void	sort_to_end(int *a, int *b, int len)
+{
+	int	i;
+	int	middle;
+	int	len_a;
+
+	len_a = len;
+	i = 0;
+	while (len_a > 5)
+	{
+		middle = find_middle(a + i, len_a, len);
+		while (is_middle(a + i, len_a, middle) && len_a > 5)
 		{
-			actions = calculate_instructions(position, tmp, sizea, sizeb);
-			position_b = tmp;
-			position_a = position;
+			if (a[i] < middle)
+			{
+				write(1, "pb\n", 3);
+				--len_a;
+				b[len_a] = a[i];
+				i++;
+				continue ;
+			}
+			rx(a + i, len_a);
+			write(1, "ra\n", 3);
 		}
-		tmp--;
 	}
-	push_to_top(stack_a, sizea, position_a, 'a');
-	push_to_top(stack_b, sizeb, position_b, 'b');
+	sort_five(a + i, len_a);
+	sort_to_a(b + len_a, len - len_a);
 }
 
-int	next_to_sort_six(int stack_a[], int stack_b[], int sizea, int *sizeb)
+int	sort_b_to_a(int *stack, int len_b, int i, int j)
 {
-	sizea = push_pa_pb(stack_b, stack_a, *sizeb, sizea);
-	write(1, "pb\n", 3);
-	*sizeb += 1;
-	return (sizea);
+	static int		fd;
+	t_calculation	c;
+
+	while (len_b > 0)
+	{
+		c.min = get_smallest_nb(stack + i, len_b);
+		c.max = get_biggest_nb(stack + i, len_b);
+		c.next = get_next_biggest_nb(stack + i, len_b);
+		rb_or_rrb(stack + i, len_b, c.max);
+		if (stack[i] == c.max || (stack[i] == c.next && !fd)
+			|| stack[i] == c.min)
+		{
+			write(1, "pa\n", 3);
+			if (stack[i] == c.next && fd == 0)
+				fd = 1;
+			else if (fd == 1 && stack[i] == c.max)
+				write(fd--, "sa\n", 3);
+			else if (stack[i] == c.min && ++j)
+				write(1, "ra\n", 3);
+			--len_b;
+			i++;
+		}
+	}
+	return (j);
 }
 
-void	sort_to_ends(int stack_a[], int stack_b[], int sizea, int sizeb)
+void	sort_to_a(int *stack, int len_b)
 {
-	int	cmp;
+	int	i;
+	int	small_nb;
+	int	rra_min_from_bottom;
 
-	cmp = sizea + 10;
-	while (cmp > 0 && !is_sorted(stack_a, sizea))
+	i = 0;
+	small_nb = 0;
+	rra_min_from_bottom = sort_b_to_a(stack, len_b, i, small_nb);
+	while (rra_min_from_bottom > 0)
 	{
-		if ((stack_a[sizea - 1] < stack_a[sizea - 2]
-				&& stack_a[sizea - 1] > stack_a[0])
-			|| stack_a[sizea - 1] == small_int(stack_a, sizea)
-			|| stack_a[sizea - 1] == big_int(stack_a, sizea))
-			rotate_ra_rb(stack_a, sizea, 'a');
-		else
-			sizea = next_to_sort_six(stack_a, stack_b, sizea, &sizeb);
-		cmp--;
+		write(1, "rra\n", 4);
+		rra_min_from_bottom--;
 	}
-	while (sizeb > 0)
-	{
-		instructions(stack_a, stack_b, sizea, sizeb);
-		sizeb = push_pa_pb(stack_a, stack_b, sizea, sizeb);
-		sizea++;
-		write(1, "pa\n", 3);
-	}
-	push_to_top(stack_a, sizea, smallest_nb(stack_a, sizea), 'a');
 }

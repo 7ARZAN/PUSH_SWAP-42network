@@ -6,22 +6,86 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:39:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/11 20:50:14 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/13 09:15:34 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-long	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	long	result;
-	long	sign;
-	long	i;
+	int	i;
+	int	res;
+	int	sign;
 
 	i = 0;
-	result = 0;
+	res = 0;
 	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sogn *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	return (res * sign);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while(s[len])
+		len++;
+	return (len);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
+int	pick_divider(int len, int len_a, int smaller)
+{
+	if (len > 250 && len_a > 250)
+	{
+		if (smaller == len_a / 7)
+			return (1);
+	}
+	else if (len > 149 || len_a < 11)
+	{
+		if (smaller == len_a / 5)
+			return (1);
+	}
+	else if (len < 150 && len_a > 10)
+	{
+		if (smaller == len_a / 3)
+			return (1);
+	}
+	return (0);
+}
+
+int	ft_ato1(const char *str, int *list)
+{
+	int	i;
+	int	tmp;
+	int	res;
+	int	sign;
+	i = 0;
+	tmp = 0;
+	res = 0;
+	sign = 1;
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;
@@ -29,56 +93,15 @@ long	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = str[i] - 48;
+		if (res == 214748364 && str[i] == '8' && sign == -1)
+			return (-2147483648);
+		res = res * 10 + str[i] - 48;
 		i++;
+		if (res < tmp)
+		{
+			write(1, "Error!\n", 7);
+			exit(1);
+		}
 	}
-	return (result * sign);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*a;
-	size_t			i;
-
-	a = s;
-	i = 0;
-	while (i < n)
-	{
-		a[i] = 0;
-		i++;
-	}
-}
-/*
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-	size_t	mem_size;
-
-	if (count == SIZE_MAX && size == SIZE_MAX)
-		return (NULL);
-	mem_size = count * size;
-	ptr = malloc(mem_size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, mem_size);
-	return (ptr);
-}
-*/
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((s1[i] == s2[i]) && s1[i] != 0 && s2[i] != 0 && i < n - 1)
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (res * sign);
 }

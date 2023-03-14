@@ -6,86 +6,60 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 07:52:28 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/10 15:56:59 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/12 21:55:41 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-int	check_order(int stack_a[])
+void	sort_smaller(int stack_a[])
 {
-	if (stack_a[2] > stack_a[1] && stack_a[2] < stack_a[0])
-		return (1);
-	if (stack_a[1] > stack_a[0] && stack_a[1] < stack_a[2])
-		return (2);
-	if (stack_a[0] > stack_a[1] && stack_a[0] < stack_a[2])
-		return (3);
-	if (stack_a[0] > stack_a[1] && stack_a[0] < stack_a[2])
-		return (4);
-	if (stack_a[2] > stack_a[0] && stack_a[2] < stack_a[1])
-		return (5);
-	else
-		return (-1);
+	if (len == 2)
+		write(1, "sa\n", 3);
+	else if (len > 2 && len < 6)
+	{
+		if (len == 3)
+			sort_three(a);
+		else
+			sort_five(a, len);
+	}
 }
 
-void	sort_two(int stack_a[])
+void	sort_three(int *a)
 {
-	if (stack_a[1] > stack_a[0])
-		swap_sa_sb(stack_a, 2, 'a');
+	int	first;
+	int	second;
+	int	third;
+
+	first = a[0];
+	second = a[1];
+	third = a[2];
+	//need if conditions for every case !
 }
 
-void	sort_two_three(int stack_a[], int sizea)
+void	sort_five(int *a, int len)
 {
+	int	min;
 	int	i;
+	int	len_b;
 
-	if (sizea == 2)
+	i = 0;
+	len_b = len;
+	while (len > 3)
 	{
-		sort_two(stack_a);
-		return ;
+		min = get_smallest_nb(a + i, len);
+		ra_or_rra(a + i, len, min);
+		if (a[i] == get_smallest_nb(a + i, len))
+		{
+			write(1, "pb\n", 3);
+			len--;
+			i++;
+		}
 	}
-	i = check_order(stack_a);
-	if (i == 1)
-		swap_sa_sb(stack_a, 3, 'a');
-	else if (i == 2)
+	sort_three(a + i);
+	while (len_b > len)
 	{
-		swap_sa_sb(stack_a, sizea, 'a');
-		reverse_rotate(stack_a, sizea, 'a');
-	}
-	else if (i == 3)
-		rotate_ra_rb(stack_a, sizea, 'a');
-	else if (i == 4)
-	{
-		swap_sa_sb(stack_a, sizea, 'a');
-		rotate_ra_rb(stack_a, sizea, 'a');
-	}
-	else if (i == 5)
-		reverse_rotate(stack_a, sizea, 'a');
-}
-
-void	sort_five(int stack_a[], int stack_b[], int sizea, int sizeb)
-{
-	int	i;
-
-	i = sizea;
-	push_to_top(stack_a, sizea, smallest_nb(stack_a, sizea), 'a');
-	sizea = push_pa_pb(stack_b, stack_a, sizeb, sizea);
-	printf("pb\n");
-	sizeb++;
-	if (sizea == 4)
-	{
-		push_to_top(stack_a, sizea, smallest_nb(stack_a, sizea), 'a');
-		sizea = push_pa_pb(stack_b, stack_a, sizeb, sizea);
-		printf("pb\n");
-		sizeb++;
-	}
-	sort_two_three(stack_a, sizea);
-	sizeb = push_pa_pb(stack_a, stack_b, sizea, sizeb);
-	printf("pa\n");
-	sizea++;
-	if (i == 5)
-	{
-		sizeb = push_pa_pb(stack_a, stack_b, sizea, sizeb);
-		printf("pa\n");
-		sizea++;
+		write(1, "pa\n", 3);
+		len_b--;
 	}
 }

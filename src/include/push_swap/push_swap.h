@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:54:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/11 20:50:45 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/13 09:18:45 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,34 @@
 # include <string.h>
 # include <stdio.h>
 
-struct s_stacks
-{
-	int	*stack_a;
-	int	*stack_b;
-}		t_stacks;
-
-int		calculate_instructions(int position_a, int position_b, int sizea,
-			int sizeb);
-void	swap_sa_sb(int stack[], int size, char character);
-void	rotate_ra_rb(int stack[], int size, char character);
-void	reverse_rotate(int stack[], int size, char character);
-int		push_pa_pb(int stack1[], int stack2[], int size1, int size2);
-int		make_stack(char *av[], int stack[], int ac);
-int		main(int ac, char *av[]);
-int		is_number(const char *nb);
-int		is_duplicated(int stack[], int index, int i);
-int		smallest_nb(int stack[], int size);
-int		is_sorted(int a[], int sizea);
-void	push_to_top(int stack[], int size, int position, char character);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-long		ft_atoi(const char *str);
-void	ft_bzero(void *s, size_t n);
-//void	ft_calloc(size_t count, size_t size);
-int		ft_isdigit(int c);
-int		find_position(int stack_a[], int size, int nb);
-void	instructions(int stack_a[], int stack_b[], int sizea, int sizeb);
-int		next_to_sort_six(int stack_a[], int stack_b[], int sizea, int *sizeb);
-void	sort_to_ends(int stack_a[], int stack_b[], int sizea, int sizeb);
-int		check_order(int stack_a[]);
-void	sort_three(int stack_a[], int sizea);
-void	sort_five(int stack_a[], int stack_b[], int sizea, int sizeb);
-int		small_int(int stack[], int size);
-int		big_int(int stack[], int size);
-void	sort_two_three(int stack_a[], int sizea);
+void	ra_or_rra(int *stack, int len, int max);
+void	rx(int *stack, int len);
+void	rrx(int *stack, int len);
+void	rb_or_rrb(int *stack, int len_b, int max);
+void	sx(int *stack, int len);
+void	is_valid(int ac, char **av); // checking if args are valid !
+void	is_duplicated(int *stack, int len); // checking if we have any double !
+void	make_stack(int len, int *stack_a, char **av); // we create stack here !
+int	is_middle(int *stack, int len_a, int middle); // we check if is middle here !
+void	speed_is_life(int *a, int *b, int len); // choosing witch sort we will use !
+int	main(int ac, char **av);
+int	calculate_position(int *stack, int middle, int len_a, int len); // where am i?
+int	find_middle(int *stack, int len_a, int len); // oh yeah i found the middle baby !
+void	sort_to_end(int *a, int *b, int len); //sort bigger !
+int	sort_b_to_a(int *stack, int len_b, int i, int j); // sort from stack b to stack a !
+void	sort_to_a(int *stack, int len_b); // sort to Stack A !
+void	sort_smaller(int *a, int len);
+void	sort_three(int *a);
+void	sort_five(int *a, int len);
+int	ft_atoi(const char *str);
+int	ft_ato1(const char *str, int *list);
+size_t	ft_strlen(const char *s);
+int	ft_isdigit(int c);
+int	pick_divider(int len, int len_a, int smaller);
+int	stack_size(int ac, char **av);
+int	is_ordered(int *stack, int len);
+int	get_biggest_nb(int *stack, int len);
+int	get_next_biggest_nb(int *stack, int len);
+int	get_smallest_nb(int *stack, int len);
 
 #endif

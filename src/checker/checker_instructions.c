@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:48:05 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:03:14 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/02/12 16:03:38 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	do_push_pa_pb(char *buffer, int sizea, int sizeb)
 
 void	do_rotate_ra_rb(char *buffer, int sizea, int sizeb)
 {
-	if (ft_strncmp(buffer, "rra", 2) == 0)
+	if (ft_strncmp(buffer, "rra", 3) == 0)
 		checker_rra_rrb(s_check.stack_a, sizea);
-	else if (ft_strncmp(buffer, "rrb", 2) == 0)
+	else if (ft_strncmp(buffer, "rrb", 3) == 0)
 		checker_rra_rrb(s_check.stack_b, sizeb);
 	if (ft_strncmp(buffer, "ra", 2) == 0)
 		checker_ra_rb(s_check.stack_a, sizea);

@@ -6,87 +6,105 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:46:53 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:07:29 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/13 07:30:11 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-int	is_number(const char *nb)
+int	stack_size(int ac, char **av)
 {
-	while (*nb)
+	int		len;
+	int		i;
+	static int	j;
+
+	len = 0;
+	while (++j < ac)
 	{
-		if (*nb == '-' || *nb == '+')
-			nb++;
-		if (!ft_isdigit(*nb))
+		i = 0;
+		while(av[j][i])
+		{
+			if (av[j][i] == '+' || av[j][i] == '-')
+				i++;
+			if (ft_isdigit(av[j][i]))
+				len++;
+			else if (av[j][i] != ' ' && av[j][i] != '\t')
+				return (-1); //Error Message should returned
+			while (ft_isdigit(av[j][i]))
+				i++;
+			if (av[j][i] && av[j][i] != ' ' && av[j][i] != '\t')
+				return (-1); //Error Message should returned
+			while (av[j][i] == '\t' && av[j][i] == ' ')
+				i++;
+		}
+	}
+	return (len);
+}
+
+int	is_ordered(int *stack, int len)
+{
+	int	i;
+
+	i = 1;
+	while (i < len)
+	{
+		if (!stack[i])
 			return (0);
-		nb++;
+		else if (stack[i - 1] > stack[i])
+			return (0);
+		i++;
 	}
 	return (1);
 }
 
-int	is_duplicated(int stack[], int index, int i)
+int	get_biggest_nb(int *stack, int len)
 {
-	while (index >= 0)
+	int	i;
+	int	max;
+
+	i = 0;
+	max = *stack;
+	while (i < len)
 	{
-		if (stack[index] == i)
-			return (0);
-		index--;
+		if (max < stack[i])
+			max = stack[i];
+		i++
 	}
-	return (1);
+	return (max);
 }
 
-int	smallest_nb(int stack[], int size)
+int	get_next_biggest_nb(int *stack, int len)
 {
-	int	nb;
-	int	index;
+	int	i;
+	int	max;
+	int	next_max;
 
-	size--;
-	index = size;
-	nb = stack[size];
-	while (size >= 0)
+	i = 0;
+	max = get_biggest_nb(stack, len);
+	next_max = *stack;
+	if (len > 1 && next_max == max)
+		next_max = stack[1];
+	while (i < len)
 	{
-		if (stack[size] < nb)
-		{
-			nb = stack[size];
-			index = size;
-		}
-		size--;
+		if (next_max < stack[i] && stack[i] != max)
+			next_max = stack[i];
+		i++;
 	}
-	return (index);
+	return (next_max);
 }
 
-void	push_to_top(int stack[], int size, int position, char character)
+int	get_smallest_nb(int *stack, int len)
 {
-	if (position >= size / 2)
-	{
-		while (size - position > 0)
-		{
-			if (position == size - 1)
-				return ;
-			rotate_ra_rb(stack, size, character);
-			position++;
-		}
-	}
-	else
-	{
-		while (position >= 0)
-		{
-			reverse_rotate(stack, size, character);
-			position--;
-		}
-	}
-}
+	int	i;
+	int	min;
 
-int	is_sorted(int a[], int sizea)
-{
-	sizea--;
-	while ((sizea - 1) >= 0)
+	i = 0;
+	min = *stack;
+	while (i < len)
 	{
-		if (a[sizea] < a[sizea - 1])
-			sizea--;
-		else
-			return (0);
+		if (min > stack[i])
+			min = stack[i];
+		i++;
 	}
-	return (1);
+	return (min);
 }
