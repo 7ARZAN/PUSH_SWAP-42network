@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap_loading.c                                 :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:20:27 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/13 08:01:41 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/14 23:22:04 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	stack_len = stack_size(ac, av);
 	a = (int *)malloc(sizeof(int) * (stack_len));
 	make_stack(stack_len, a, av);
-	b = (int *)malloc((sizeof(int) * (stack_len));
+	b = (int *)malloc((stack_len) * sizeof(int));
 	if (is_ordered(a, stack_len) == 0)
 		speed_is_life(a, b, stack_len);
 	free(a);

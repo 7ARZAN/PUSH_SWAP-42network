@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:46:53 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/13 07:30:11 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/14 23:22:35 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	get_biggest_nb(int *stack, int len)
 	{
 		if (max < stack[i])
 			max = stack[i];
-		i++
+		i++;
 	}
 	return (max);
 }

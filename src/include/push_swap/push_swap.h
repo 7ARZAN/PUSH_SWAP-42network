@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:54:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/13 09:18:45 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/14 23:27:24 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+
+typedef struct s_calculation
+{
+	int	min;
+	int	max;
+	int	next;
+}t_calculation;
 
 void	ra_or_rra(int *stack, int len, int max);
 void	rx(int *stack, int len);

@@ -6,13 +6,13 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 07:52:28 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/12 21:55:41 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/18 13:19:59 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap/push_swap.h>
 
-void	sort_smaller(int stack_a[])
+void	sort_smaller(int *a, int len)
 {
 	if (len == 2)
 		write(1, "sa\n", 3);
@@ -34,7 +34,23 @@ void	sort_three(int *a)
 	first = a[0];
 	second = a[1];
 	third = a[2];
-	//need if conditions for every case !
+	if (first > second && first < third && third > second)
+		write(1, "sa\n", 3);
+	else if (first > second && third < second)
+	{
+		write(1, "sa\n", 3);
+		write(1, "rra\n", 4);
+	}
+	else if (first > second && first > third && third > second)
+		write(1, "ra\n", 3);
+	else if (first < second && first < third && second > third)
+	{
+		write(1, "sa\n", 3);
+		write(1, "ra\n", 3);
+	}
+	else if (first < second && first > third)
+		write(1, "rra\n", 4);
+	//need if conditions for every case !§
 }
 
 void	sort_five(int *a, int len)

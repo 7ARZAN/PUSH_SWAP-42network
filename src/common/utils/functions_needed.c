@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:39:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/13 09:15:34 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/14 23:24:52 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_atoi(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sogn *= -1;
+			sign *= -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
@@ -100,6 +100,7 @@ int	ft_ato1(const char *str, int *list)
 		if (res < tmp)
 		{
 			write(1, "Error!\n", 7);
+			free(list);
 			exit(1);
 		}
 	}

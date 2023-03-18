@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 08:15:13 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/13 08:25:09 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/14 23:28:37 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	calculate_position(int *stack, int middle, int len_a, int len)
 	int	i;
 
 	i = 0;
+	smaller = 0;
 	while (i < len_a)
 	{
 		if (stack[i] < middle)

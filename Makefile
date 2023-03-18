@@ -6,12 +6,12 @@
 #    By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 11:25:31 by 7arzan            #+#    #+#              #
-#    Updated: 2023/03/13 08:07:44 by 7arzan           ###   ########.fr        #
+#    Updated: 2023/03/14 23:21:12 by 7arzan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_COMMON = ./src/common/parser.c\
-	     ./src/common/push_swap_loading.c\
+	     ./src/common/push_swap.c\
 	     ./src/common/instructions.c\
 	     ./src/common/utils/push_swap_utils.c\
 	     ./src/common/utils/functions_needed.c\
