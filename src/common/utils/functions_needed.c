@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:39:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/14 23:24:52 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/18 14:44:25 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	ft_ato1(const char *str, int *list)
 		i++;
 		if (res < tmp)
 		{
-			write(1, "Error!\n", 7);
+			write(1, "broblam\n", 8);
 			free(list);
 			exit(1);
 		}

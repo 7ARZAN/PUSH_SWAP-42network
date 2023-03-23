@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:12:47 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/13 09:18:29 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/23 22:31:49 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	is_valid(int ac, char **av)
 			i++;
 		}
 		if (ft_strlen(av[j]) == space)
-			return ;
+		{
+			write(1, "ERROR\n", 6);
+			exit(1);
+		}
 	}
 }
 
@@ -54,8 +57,8 @@ void	is_duplicated(int *stack, int len)
 			}
 			i++;
 		}
+		j++;
 	}
-	j++;
 }
 
 void	make_stack(int len, int *stack_a, char **av)
