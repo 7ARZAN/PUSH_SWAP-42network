@@ -42,7 +42,7 @@ size_t	ft_strlen(const char *s)
 	size_t	len;
 
 	len = 0;
-	while(s[len])
+	while (s[len])
 		len++;
 	return (len);
 }
@@ -81,6 +81,7 @@ int	ft_ato1(const char *str, int *list)
 	int	tmp;
 	int	res;
 	int	sign;
+
 	i = 0;
 	tmp = 0;
 	res = 0;

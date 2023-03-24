@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:57:28 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/04 12:02:49 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/24 01:24:21 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	checker_rra_rrb(int stack[], int size)
 	size--;
 	while (i < size)
 	{
-		stack[i] = stack[size + 1];
+		stack[i] = stack[i + 1];
 		i++;
 	}
 	stack[i] = tmp;

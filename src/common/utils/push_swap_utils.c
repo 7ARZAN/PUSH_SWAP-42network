@@ -14,26 +14,28 @@
 
 int	stack_size(int ac, char **av)
 {
-	int		len;
-	int		i;
+	int			len;
+	int			i;
 	static int	j;
 
 	len = 0;
 	while (++j < ac)
 	{
 		i = 0;
-		while(av[j][i])
+		while (av[j][i])
 		{
 			if (av[j][i] == '+' || av[j][i] == '-')
 				i++;
 			if (ft_isdigit(av[j][i]))
 				len++;
 			else if (av[j][i] != ' ' && av[j][i] != '\t')
-				return (write(1, "ERROR!\n", 7), 1); //Error Message should returned
+				return (write(1, "ERROR!\n", 7), 1);
+				//Error Message should returned
 			while (ft_isdigit(av[j][i]))
 				i++;
 			if (av[j][i] && av[j][i] != ' ' && av[j][i] != '\t')
-				return (write(1, "ERROR!\n", 7), 1); //Error Message should returned
+				return (write(1, "ERROR!\n", 7), 1);
+				//Error Message should returned
 			while (av[j][i] == '\t' && av[j][i] == ' ')
 				i++;
 		}
