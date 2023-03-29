@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:41:53 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/17 22:33:59 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/29 02:14:36 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	tester(int sizea, int sizeb, int ac)
 	{
 		if (validation_instruction(buffer) == 0)
 		{
-			write(2, "ERROR\n", 6);
+			write(2, "ERROR!!!\n", 6);
 			free(buffer);
 			exit(1);
 		}
