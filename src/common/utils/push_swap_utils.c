@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:46:53 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/29 01:37:52 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:43:29 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	stack_size(int ac, char **av)
 			else if (ft_isdigit(av[j][i]))
 				len++;
 			else if (av[j][i] != ' ' && av[j][i] != '\t')
-				return (write(2, "ERROR!\n", 7), 1);
+				return (write(2, "ERROR!\n", 7), -1);
 			while (ft_isdigit(av[j][i]))
 				i++;
 			if (av[j][i] && av[j][i] != ' ' && av[j][i] != '\t')
-				return (write(2, "ERROR!\n", 7), 1);
+				return (write(2, "ERROR!\n", 7), -1);
 			while (av[j][i] == '\t' || av[j][i] == ' ')
 				i++;
 		}
