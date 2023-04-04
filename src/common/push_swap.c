@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:20:27 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/14 23:22:04 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/29 20:48:40 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,11 @@ int	main(int ac, char **av)
 	free(a);
 	free(b);
 	return (0);
+}
+
+void	error(int *list)
+{
+	write(2, "Error!\n", 7);
+	free(list);
+	exit(1);
 }

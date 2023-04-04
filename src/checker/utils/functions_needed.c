@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:39:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/02/09 20:17:23 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/03/29 05:36:26 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-/*
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
@@ -65,7 +65,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(ptr, mem_size);
 	return (ptr);
 }
-*/
+
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')

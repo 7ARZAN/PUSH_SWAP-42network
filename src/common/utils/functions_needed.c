@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:39:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/18 14:44:25 by 7arzan           ###   ########.fr       */
+/*   Updated: 2023/04/04 11:32:19 by 7arzan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ int	pick_divider(int len, int len_a, int smaller)
 {
 	if (len > 250 && len_a > 250)
 	{
-		if (smaller == len_a / 7)
+		if (smaller == len_a / 6)
 			return (1);
 	}
 	else if (len > 149 || len_a < 11)
 	{
-		if (smaller == len_a / 5)
+		if (smaller == len_a / 4)
 			return (1);
 	}
 	else if (len < 150 && len_a > 10)
 	{
-		if (smaller == len_a / 3)
+		if (smaller == len_a / 2)
 			return (1);
 	}
 	return (0);
@@ -99,11 +99,7 @@ int	ft_ato1(const char *str, int *list)
 		res = res * 10 + str[i] - 48;
 		i++;
 		if (res < tmp)
-		{
-			write(1, "broblam\n", 8);
-			free(list);
-			exit(1);
-		}
+			error(list);
 	}
 	return (res * sign);
 }
