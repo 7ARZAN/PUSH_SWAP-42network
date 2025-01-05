@@ -6,7 +6,7 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 04:12:47 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/23 22:31:49 by 7arzan           ###   ########.fr       */
+/*   Updated: 2025/01/05 06:07:06 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	is_valid(int ac, char **av)
 		}
 		if (ft_strlen(av[j]) == space)
 		{
-			write(1, "ERROR\n", 6);
+			write(1, "Error!\n", 6);
 			exit(1);
 		}
 	}

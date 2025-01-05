@@ -6,9 +6,20 @@
 #    By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 11:25:31 by 7arzan            #+#    #+#              #
-#    Updated: 2023/03/14 23:21:12 by 7arzan           ###   ########.fr        #
+#    Updated: 2025/01/05 05:59:07 by elakhfif         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+CLR_RMV:= \033[0m
+RED:= \033[1;31m
+GREEN:= \033[1;32m
+YELLOW:= \033[1;33m
+BLUE:= \033[1;34m
+CYAN:= \033[1;36m
+
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror -O3
 
 SRC_COMMON = ./src/common/parser.c\
 	     ./src/common/push_swap.c\
@@ -32,10 +43,8 @@ OBJ_CHECKER = $(SRC_CHECKER:.c=.o)
 
 INCLUDE = ./src/include
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -O3
-
 NAME = push_swap
+
 NAME_CHECKER = checker
 
 RM = rm -f
@@ -43,14 +52,6 @@ RM = rm -f
 all: $(NAME)
 
 bonus : $(NAME_CHECKER)
-
-CLR_RMV:= \033[0m
-RED:= \033[1;31m
-GREEN:= \033[1;32m
-YELLOW:= \033[1;33m
-BLUE:= \033[1;34m
-CYAN:= \033[1;36m
-
 .c.o:
 	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o ${<:.c=.o}
 

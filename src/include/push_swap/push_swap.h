@@ -6,14 +6,13 @@
 /*   By: 7arzan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:54:37 by 7arzan            #+#    #+#             */
-/*   Updated: 2023/03/29 06:17:32 by 7arzan           ###   ########.fr       */
+/*   Updated: 2025/01/05 06:11:00 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
