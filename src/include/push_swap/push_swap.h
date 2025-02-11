@@ -37,7 +37,7 @@ void	make_stack(int len, int *stack_a, char **av); // we create stack here !
 int		is_middle(int *stack, int len_a, int middle);
 // we check if is middle here !
 void	speed_is_life(int *a, int *b, int len);
-// choosing witch sort we will use !
+// choosing which sort we will use !
 int		main(int ac, char **av);
 int		calculate_position(int *stack, int middle, int len_a, int len);
 // where am i?
